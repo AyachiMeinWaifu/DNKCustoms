@@ -53,30 +53,30 @@ function s.regop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,0))
 	end
 	if g:IsExists(s.checkfilter,1,nil,TYPE_SYNCHRO) then
-		c:RegisterFlagEffect(id+o,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,1))
+		c:RegisterFlagEffect(id+100000000,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,1))
 	end
 	if g:IsExists(s.checkfilter,1,nil,TYPE_XYZ) then
-		c:RegisterFlagEffect(id+o*2,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,2))
+		c:RegisterFlagEffect(id+100000000*2,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,2))
 	end
 	if g:IsExists(s.checkfilter,1,nil,TYPE_PENDULUM) then
-		c:RegisterFlagEffect(id+o*3,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,3))
+		c:RegisterFlagEffect(id+100000000*3,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,3))
 	end
 	if g:IsExists(s.checkfilter,1,nil,TYPE_LINK) then
-		c:RegisterFlagEffect(id+o*4,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,4))
+		c:RegisterFlagEffect(id+100000000*4,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,4))
 	end
 	if g:IsExists(s.checkfilter,1,nil,TYPE_RITUAL) then
-		c:RegisterFlagEffect(id+o*5,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,5))
+		c:RegisterFlagEffect(id+100000000*5,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(id,5))
 	end
 end
 function s.distg(e,c)
 	if not c:IsFaceup() then return false end
 	local ec=e:GetHandler()
 	local b1=ec:GetFlagEffect(id)>0 and c:IsType(TYPE_FUSION)
-	local b2=ec:GetFlagEffect(id+o)>0 and c:IsType(TYPE_SYNCHRO)
-	local b3=ec:GetFlagEffect(id+o*2)>0 and c:IsType(TYPE_XYZ)
-	local b4=ec:GetFlagEffect(id+o*3)>0 and c:IsType(TYPE_PENDULUM)
-	local b5=ec:GetFlagEffect(id+o*4)>0 and c:IsType(TYPE_LINK)
-	local b6=ec:GetFlagEffect(id+o*5)>0 and c:IsType(TYPE_RITUAL)
+	local b2=ec:GetFlagEffect(id+100000000)>0 and c:IsType(TYPE_SYNCHRO)
+	local b3=ec:GetFlagEffect(id+100000000*2)>0 and c:IsType(TYPE_XYZ)
+	local b4=ec:GetFlagEffect(id+100000000*3)>0 and c:IsType(TYPE_PENDULUM)
+	local b5=ec:GetFlagEffect(id+100000000*4)>0 and c:IsType(TYPE_LINK)
+	local b6=ec:GetFlagEffect(id+100000000*5)>0 and c:IsType(TYPE_RITUAL)
 	return b1 or b2 or b3 or b4 or b5 or b6
 end
 function s.descon(e,tp,eg,ep,ev,re,r,rp)
