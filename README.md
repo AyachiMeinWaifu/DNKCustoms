@@ -10,3 +10,4 @@ Add this to "\ProjectIgnis\config\configs.json" after ```"repos": [```, or creat
     "should_read": true
   },
 ```
+You can also download the user_config.json file in "\assets".
