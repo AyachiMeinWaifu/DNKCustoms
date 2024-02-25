@@ -2,20 +2,8 @@
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--summon with 3 tribute
-    local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(id,6))
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_LIMIT_SUMMON_PROC)
-	e1:SetCondition(s.ttcon)
-	e1:SetOperation(s.ttop)
-	e1:SetValue(SUMMON_TYPE_ADVANCE)
-	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_LIMIT_SET_PROC)
-	e2:SetCondition(s.setcon)
-	c:RegisterEffect(e2)
+	local e1=aux.AddNormalSummonProcedure(c,true,false,3,3)
+	local e2=aux.AddNormalSetProcedure(c)
     --tribute check
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
@@ -50,19 +38,6 @@ function s.initial_effect(c)
 	e6:SetTargetRange(0,LOCATION_MZONE)
 	e6:SetTarget(s.distg)
 	c:RegisterEffect(e6)
-end
-function s.ttcon(e,c,minc)
-	if c==nil then return true end
-	return minc<=3 and Duel.CheckTribute(c,3)
-end
-function s.ttop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectTribute(tp,c,3,3)
-	c:SetMaterial(g)
-	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
-end
-function s.setcon(e,c,minc)
-	if not c then return true end
-	return false
 end
 function s.checkfilter(c,rtype)
 	return c:IsType(rtype)
